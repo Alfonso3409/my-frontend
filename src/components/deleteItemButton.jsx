@@ -6,7 +6,7 @@ const DeleteButton = ({ productId }) => {
     try {
       await axios.delete(`http://localhost:3002/api/products/${productId}`);
       alert('Product deleted successfully!');
-      // You can also refresh the product list here or navigate to the home page
+      //need to refresh the product list here or navigate to the home page
     } catch (error) {
       console.error('Error deleting product:', error);
       alert('Failed to delete product.');

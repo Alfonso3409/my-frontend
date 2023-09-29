@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import Cookies from 'js-cookie';
-// import { useAuth } from './authContext';
+import Cookies from 'js-cookie';
+import { useAuth } from './authContext';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
