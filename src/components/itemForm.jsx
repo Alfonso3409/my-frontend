@@ -18,7 +18,7 @@ const ItemForm = () => {
     try {
       await axios.post('http://localhost:3002/api/products', formData);
       alert('Product added successfully!');
-      // You can also refresh the product list here or navigate to the home page
+      // need to refresh the product list here or navigate to the home page
     } catch (error) {
       console.error('Error adding product:', error);
       alert('Failed to add product.');

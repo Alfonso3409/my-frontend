@@ -31,7 +31,7 @@ const UpdateForm = ({ productId }) => {
     try {
       await axios.put(`http://localhost:3002/api/products/${productId}`, formData);
       alert('Product updated successfully!');
-      // You can also refresh the product list here or navigate to the home page
+      // need to refresh the product list here or navigate to the home page
     } catch (error) {
       console.error('Error updating product:', error);
       alert('Failed to update product.');

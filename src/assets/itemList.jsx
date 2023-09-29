@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import DeleteButton from '../components/deleteItemButton';
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3002/api/products')
-      .then(response => response.json())
-      .then(data => setProducts(data))
+    axios.get('http://localhost:3002/api/products')
+      .then(response => setProducts(response.data))
       .catch(error => console.error('Error fetching products:', error));
   }, []);
-
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
       {products.map(product => (
         <div key={product.id} style={cardStyle}>
-          <img src={product.image} alt={product.title} style={imageStyle} />
-          <h2>{product.title}</h2>
+          <Link to={`/product/${product.id}`}>
+            <img src={product.image_url} alt={product.title} style={imageStyle} />
+            <h2>{product.name}</h2>
+          </Link>
           <p>{product.description}</p>
           <p>Price: ${product.price}</p>
           <p>Category: {product.category}</p>
-          <p>Rating: {product.rating.rate} ({product.rating.count} reviews)</p>
+          {product.rating ? (
+            <p>Rating: {product.rating.rate} ({product.rating.count} reviews)</p>
+          ) : (
+            <p>No ratings available</p>
+          )}
         </div>
       ))}
     </div>
